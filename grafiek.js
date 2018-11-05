@@ -1,8 +1,12 @@
 //POST 172.16.1.12/api/image body: image: base 64(bytes)->png format 96x64px
 
+const fs = require('fs')
+const out = fs.createWriteStream(__dirname + '/grafiek.png')
+
 const { createCanvas } = require('canvas')
 const canvas = createCanvas(96, 64)
 const ctx = canvas.getContext('2d')
+const stream = canvas.createPNGStream()
 
 ctx.font = '10px Impact'
 ctx.fillText('Temperature', 25, 10)
@@ -30,3 +34,7 @@ ctx.lineWidth = 1;
 ctx.stroke();
 
 console.log('<img src="' + canvas.toDataURL(canvas, '#ffffff') + '" />')
+
+stream.pipe(out)
+out.on('finish', () =>  console.log('The PNG file was created.'))
+
