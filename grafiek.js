@@ -8,7 +8,13 @@ const canvas = createCanvas(96, 64)
 const ctx = canvas.getContext('2d')
 const stream = canvas.createPNGStream()
 
+//Express
+const express = require('express')
+const app = express()
+const port = 3000
+
 ctx.font = '10px Impact'
+ctx.fillStyle = "#ff0000";
 ctx.fillText('Temperature', 25, 10)
 ctx.beginPath();
 ctx.strokeStyle = "rgba(255, 0, 0, 1)"
@@ -38,3 +44,7 @@ console.log('<img src="' + canvas.toDataURL(canvas, '#ffffff') + '" />')
 stream.pipe(out)
 out.on('finish', () =>  console.log('The PNG file was created.'))
 
+
+//Express
+app.get('/', (req, res) => res.send(canvas.toDataURL(canvas)))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
