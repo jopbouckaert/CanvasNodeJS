@@ -1,0 +1,28 @@
+{
+  "name": "canvasnodejs",
+  "version": "1.0.0",
+  "description": "Generating png in nodejs",
+  "main": "grafiek.js",
+  "dependencies": {
+    "canvas": "^2.1.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aythonhouttekier/CanvasNodeJS.git"
+  },
+  "keywords": [
+    "npm",
+    "npm-canvas"
+  ],
+  "author": "aythonhouttekier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aythonhouttekier/CanvasNodeJS/issues"
+  },
+  "homepage": "https://github.com/aythonhouttekier/CanvasNodeJS#readme"
+}
