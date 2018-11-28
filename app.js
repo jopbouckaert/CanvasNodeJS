@@ -18,20 +18,24 @@ ttn.data(appID, accessKey)
     client.on("uplink", function (devID, payload) {
         var devID = "sensor-02"
         console.log("Received uplink from ", devID)
-        console.log(payload.payload_fields.temperature)
-
+        console.log(payload)
+        console.log(payload.payload_fields.counter)
+       
+        height = canvas.height
+        width = canvas.width
+        ctx.clearRect(0,0,width,height);    
         ctx.font = '20px Impact'
         ctx.fillStyle = "#ff0000";
         ctx.fillText(payload.payload_fields.temperature + "°C", 10, 50)
-
         //image source in de console
-        console.log('<img src="' + canvas.toDataURL(canvas, '#ffffff') + '" />')
+        //console.log('<img src="' + canvas.toDataURL(canvas, '#ffffff') + '" />')
         
         //opslaan van afbeeldiing in images map
         const out = fs.createWriteStream('images/temperature.png')
         const stream = canvas.createPNGStream()
         stream.pipe(out)
         out.on('finish', () =>  console.log('The PNG file was created.'))
+
     })
 })
 .catch(function (error) {
@@ -39,6 +43,9 @@ ttn.data(appID, accessKey)
     process.exit(1)
 })
 
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
 //Express
-app.get('/', (req, res) => res.send(canvas.toDataURL(canvas)))
-app.listen(port, () => console.log(`Temperature app listening on port ${port}!`))
+//app.get('/', (req, res) => res.send(canvas.toDataURL(canvas)))
+//app.listen(port, () => console.log(`Temperature app listening on port ${port}!`))
