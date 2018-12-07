@@ -11,7 +11,8 @@ Using canvas to create image
 
 ```npm install express --save```
 
-```npm install --save ttn```
+```npm install body-parser```
+
 
 data received from ttn 0xFF 0XFF /100
 
