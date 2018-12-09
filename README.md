@@ -1,37 +1,40 @@
 # Canvas in NodeJS
 
-Using canvas to create image
+Using canvas to create image of data received from STT and responds with the base64 code of the image.
+
+![schema](images/schema.png)
+
+The image that has been created with the data of STT.
 
 ![currentTemp](images/temperature.png)
-![grafiek](images/grafiek.png)
+
+
+## Getting Started
+
+The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+cloning the repository:
+
+```git clone git@github.com:vives-iotapplications-2018/CanvasNodeJS.git```
 
 ```npm install``` 
 
-```npm install canvas```
+command to run the script
 
-```npm install express --save```
+```npm start```
 
-```npm install body-parser```
+![npmStart](images/npmStart.png)
 
+The app is a server that is waiting on a received post request and then an image is made with the value in the post request. The answer is the base64 code of the image.
 
-data received from ttn 0xFF 0XFF /100
+You can simulate a post request with postman.
 
+![simulatedPost](images/simulatedPost.png)
 
-payload format in ttn console
+In the console you get the body of the post request.
 
-```
-function Decoder(bytes, port) {
-    // Decode an uplink message from a buffer
-    // (array) of bytes to an object of fields.
-    var decoded = {};
-    
-    // Decode bytes to int
-    var temperature = (bytes[0] & 0x80 ? 0xFFFF<<16 : 0) | bytes[0]<<8 | bytes[1];;
-    
-    // Decode int to float
-    decoded.temperature = temperature / 100;
-    
-    
-    return decoded;
-    }
-```
+![consolePost](images/consolePost.png)
+
+The generated image:
+
+![temperature](images/temperature.png)
