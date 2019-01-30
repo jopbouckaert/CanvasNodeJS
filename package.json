@@ -5,7 +5,6 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "canvas": "^2.1.0",
     "jimp": "^0.6.0",
     "express": "^4.16.4"
   },
